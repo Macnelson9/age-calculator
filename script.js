@@ -1,86 +1,49 @@
-"use strict";
+'use strict';
 
-// To input items in localStorage
-// const colorsArray = ["blue", "green", "white"];
-// localStorage.setItem("colors", JSON.stringify(colorsArray));
+const selectedDate = document.getElementById('date');
+const calcBtn = document.getElementById('calculate');
+const yearsEl = document.querySelector('.years-bold');
+const monthsEl = document.querySelector('.months-bold');
+const daysEl = document.querySelector('.days-bold');
+const yearsP = document.querySelector('.years-p');
+const monthsP = document.querySelector('.months-p');
+const daysP = document.querySelector('.days-p');
 
-// const numbersArray = [1, 2, 3];
-// localStorage.setItem("numbers", JSON.stringify(numbersArray));
+calcBtn.addEventListener('click', function () {
+  const currentDate = new Date();
+  const birthDate = new Date(selectedDate.value);
+  let age = currentDate.getFullYear() - birthDate.getFullYear();
+  const month = currentDate.getMonth() - birthDate.getMonth();
+  const day = currentDate.getDate() - birthDate.getDate();
 
-// To retrieve items from localStorage
-// const colorsData = JSON.parse(localStorage.getItem("colors"));
-// console.log(colorsData);
+  if (
+    month < 0 ||
+    (month === 0 && currentDate.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
 
-// const numbersData = JSON.parse(localStorage.getItem("numbers"));
-// console.log(numbersData);
+  yearsEl.innerText = age;
+  monthsEl.innerText = Math.abs(month);
+  daysEl.innerText = Math.abs(day);
 
-// To delete 1 item from localStorage
-// localStorage.removeItem("colors");
+  if (age <= 1) {
+    yearsP.innerText = 'Year';
+  } else {
+    yearsP.innerText = 'Years';
+  }
 
-// To delete all items from localStorage
-// localStorage.clear();
+  if (Math.abs(month) <= 1) {
+    monthsP.innerText = 'Month';
+  } else {
+    monthsP.innerText = 'Months';
+  }
 
-// const ul = document.querySelector("ul");
-// const input = document.getElementById("item");
-// Array to store to-do items
-// let itemsArray = localStorage.getItem("items")
-//   ? JSON.parse(localStorage.getItem("items"))
-//   : [];
+  if (Math.abs(day) <= 1) {
+    daysP.innerText = 'Day';
+  } else {
+    daysP.innerText = 'Days';
+  }
 
-// itemsArray.forEach(liMaker);
-
-// function liMaker(text) {
-//   const li = document.createElement("li");
-//   li.textContent = text;
-//   ul.appendChild(li);
-// }
-
-// function add() {
-//   itemsArray.push(input.value);
-//   localStorage.setItem("items", JSON.stringify(itemsArray));
-//   liMaker(input.value);
-//   input.value = "";
-// }
-
-// function del() {
-//   localStorage.clear();
-//   ul.innerHTML = "";
-//   itemsArray = [];
-// }
-
-const colorBoxes = document.getElementsByClassName("color-boxes")[0];
-const color = document.getElementById("color");
-const hex = document.getElementById("hex");
-
-let colorsArray = localStorage.getItem("items")
-  ? JSON.parse(localStorage.getItem("items"))
-  : [];
-
-colorsArray.forEach(divMaker);
-function divMaker(text) {
-  const div = document.createElement("div");
-  div.className = "box";
-  div.style.background = text.color_name;
-  div.innerHTML =
-    `<h2>` + text.color_name + `</h2>` + `<h2>` + text.hex_code + `</h2>`;
-  colorBoxes.appendChild(div);
-}
-
-function add() {
-  var color_info = {
-    color_name: color.value,
-    hex_code: hex.value,
-  };
-
-  colorsArray.push(color_info);
-  localStorage.setItem("items", JSON.stringify(colorsArray));
-  divMaker(colorsArray[colorsArray.length - 1]);
-  color.value = "";
-  hex.value = "";
-}
-
-function del() {
-  localStorage.clear();
-  colorsArray = [];
-  colorBoxes.innerHTML = "";
-}
+  return age;
+});

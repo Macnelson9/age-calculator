@@ -7,43 +7,32 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- <div class="container">
-      <div class="to-do-app">
-        <h2>To-do App</h2>
-        <br />
-        <label for="item">Item</label>
-        <br />
-        <input type="text" id="item" />
-        <br />
-        <br />
-        <button onclick="add()">Add</button>
-        <button onclick="del()">Del</button>
-      </div>
+    <h1>Age Calculator</h1>
+    <div class="input-container">
+      <input type="date" id="date" name="date" />
 
-      <ul></ul>
-    </div> -->
-
-    <div class="container">
-      <div class="input-box">
-        <label for="color">Color name</label>
-        <br />
-        <input type="text" id="color" />
-        <br />
-        <br />
-        <label for="hex">Hex code</label>
-        <br />
-        <input type="text" id="hex" />
-        <br />
-        <br />
-        <button onclick="add()">Enter</button>
-        <button onclick="del()">Delete</button>
-      </div>
+      <button id="calculate">Calculate</button>
     </div>
 
-    <div class="container">
-      <div class="color-boxes"></div>
-    </div>
+    <div class="result-container">
+      <div class="years">
+        <p class="years-bold">1</p>
 
+        <p class="years-p">Years</p>
+      </div>
+
+      <div class="months">
+        <p class="months-bold">9</p>
+
+        <p class="months-p">Months</p>
+      </div>
+
+      <div class="days">
+        <p class="days-bold">27</p>
+
+        <p class="days-p">Days</p>
+      </div>
+    </div>
     <script defer src="script.js"></script>
   </body>
 </html>
