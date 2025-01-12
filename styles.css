@@ -16,7 +16,7 @@ body {
 }
 
 body h1 {
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: 'Trebuchet MS', sans-serif;
 }
 
 .input-container {
@@ -34,7 +34,7 @@ body h1 {
   padding: 7px;
   border-radius: 5px;
   border-style: none;
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: 'Trebuchet MS', sans-serif;
   width: 120%;
 }
 
@@ -42,13 +42,13 @@ body h1 {
   padding: 8px 10px;
   border-radius: 3px;
   border-style: none;
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: 'Trebuchet MS', sans-serif;
   cursor: pointer;
 }
 
 .result-container {
   color: white;
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: 'Trebuchet MS', sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,4 +81,36 @@ p.months-p,
 p.days-p {
   margin: 0;
   font-size: 0.7rem;
+}
+
+.zodiac-container {
+  background-color: black;
+  padding: 23px;
+  border-radius: 6px;
+  color: white;
+  font-family: 'Trebuchet MS', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+}
+
+.details h4 {
+  font-size: 1.3rem;
+}
+
+.details ul li {
+  font-size: 0.9rem;
+  text-align: justify;
+}
+
+.zodiac-image {
+  padding: 20px;
+  width: fit-content;
+}
+
+.zodiac-image img {
+  border-radius: 50%;
+  width: 120%;
 }
