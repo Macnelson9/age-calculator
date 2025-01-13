@@ -114,3 +114,54 @@ p.days-p {
   border-radius: 50%;
   width: 120%;
 }
+
+/* Media queries */
+@media (max-width: 428px) {
+  .input-container {
+    width: 120%;
+  }
+
+  .input-container input {
+    width: 50%;
+  }
+
+  .zodiac-container {
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+
+  .zodiac-image {
+    padding: 20px;
+    width: 50%;
+  }
+
+  .details ul li {
+    font-size: 1rem;
+    text-align: left;
+  }
+}
+
+@media (max-width: 320px) {
+  .input-container {
+    width: 100%;
+  }
+
+  .input-container input {
+    width: 50%;
+  }
+
+  .zodiac-container {
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+
+  .zodiac-image {
+    padding: 20px;
+    width: 60%;
+  }
+
+  .details ul li {
+    font-size: 1.1rem;
+    text-align: left;
+  }
+}
