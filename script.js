@@ -4,6 +4,7 @@
 const selectedDate = document.getElementById('date');
 const calcBtn = document.getElementById('calculate');
 const clearBtn = document.getElementById('clear');
+const clearHistoryBtn = document.getElementById('clearHistoryBtn');
 const yearsEl = document.querySelector('.years-bold');
 const monthsEl = document.querySelector('.months-bold');
 const daysEl = document.querySelector('.days-bold');
@@ -16,6 +17,7 @@ const zodiacDetails = document.getElementById('more-details');
 const zodiacSummary = document.getElementById('summary');
 const zodiacImage = document.getElementById('zodiacImage');
 
+// Age formatter logic to determine if to display year or years, month or months, day or days
 const ageFormatter = function (age, month, day) {
   if (age <= 1) {
     yearsP.innerText = 'Year';
@@ -250,6 +252,40 @@ const zodiacSign = function (month, day) {
   }
 };
 
+// Display History logic
+const displayHistory = function (month, day, age) {
+  const user = {
+    userMonth: month,
+    userDay: day,
+    userAge: age,
+  };
+
+  const historyDetails = document.querySelector('.history-details');
+  const history = JSON.parse(localStorage.getItem('ageHistory')) || [];
+
+  history.push(user);
+
+  localStorage.setItem('ageHistory', JSON.stringify(history));
+
+  let historyHTML = '';
+
+  history.forEach((user, index) => {
+    historyHTML += `<p>${index + 1}. ${user.userAge} ${
+      user.userAge > 1 ? 'years' : 'year'
+    }, ${user.userMonth} ${user.userMonth > 1 ? 'months' : 'month'}, ${
+      user.userDay
+    } ${user.userDay > 1 ? 'days' : 'day'} old.</p>`;
+  });
+
+  historyDetails.innerHTML = historyHTML;
+};
+
+// Clear history logic
+const clearHistory = function () {
+  localStorage.removeItem('ageHistory');
+  document.querySelector('.history-details').innerHTML = '';
+};
+
 // Calculate button logic
 calcBtn.addEventListener('click', function () {
   const currentDate = new Date();
@@ -273,6 +309,8 @@ calcBtn.addEventListener('click', function () {
 
   zodiacSign(month, birthDate.getDate());
 
+  displayHistory(Math.abs(month), Math.abs(day), age);
+
   return age, month, day;
 });
 
@@ -294,3 +332,6 @@ clearBtn.addEventListener('click', function () {
           </li>`;
   zodiacImage.src = ``;
 });
+
+// Clear history button logic
+clearHistoryBtn.addEventListener('click', clearHistory);

@@ -115,6 +115,28 @@ p.days-p {
   width: 120%;
 }
 
+.history-container {
+  background-color: black;
+  padding: 23px;
+  border-radius: 6px;
+  color: white;
+  font-family: 'Trebuchet MS', sans-serif;
+  width: 100%;
+}
+
+.history-cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#clearHistoryBtn {
+  padding: 8px 10px;
+  border-radius: 3px;
+  border-style: none;
+  font-family: 'Trebuchet MS', sans-serif;
+  cursor: pointer;
+}
 /* Media queries */
 @media (max-width: 428px) {
   .input-container {
